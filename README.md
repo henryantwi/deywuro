@@ -1,5 +1,10 @@
 # deywuro
 
+[![CI](https://github.com/henryantwi/deywuro/actions/workflows/ci.yml/badge.svg)](https://github.com/henryantwi/deywuro/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/deywuro.svg)](https://pypi.org/project/deywuro/)
+[![Python versions](https://img.shields.io/pypi/pyversions/deywuro.svg)](https://pypi.org/project/deywuro/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Unofficial Python client for the [Deywuro](https://deywuro.com) (Npontu) SMS gateway.
 Sends SMS to Ghanaian phone numbers via Deywuro's `/api/sms` endpoint.
 
