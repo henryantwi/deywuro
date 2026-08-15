@@ -5,6 +5,87 @@ Sends SMS to Ghanaian phone numbers via Deywuro's `/api/sms` endpoint.
 
 Not affiliated with Npontu Technologies.
 
+## Getting a Deywuro account and Sender ID
+
+You need a Deywuro account, an API username/password, and an approved
+Sender ID before you can send anything with this library. Here's how to get
+all three, from scratch:
+
+### 1. Create an account
+
+1. Go to [deywuro.com/login](https://deywuro.com/login) and click
+   **Create Account**.
+2. Fill in the registration form:
+   - **Register As** — `Client` (this is what you want, unless you're
+     reselling Deywuro's service to your own customers, in which case pick
+     `Reseller`)
+   - **Name of Company/Individual** — your business name, or your own name
+     if you're signing up individually
+   - **Nature of Business** — pick the closest match from the dropdown
+   - **Business Location**
+   - **Preferred Username** — 6-30 characters, letters/numbers/underscore/
+     hyphen. This becomes part of your API login, so pick something you're
+     fine hard-coding into a `.env` file
+   - **Contact Person Name / Email / Phone Number** — used for account
+     verification and support
+   - Optional: company phone number, mobile money number, business logo,
+     business registration document, an **LOA (Letter of Authorization)**,
+     and an ID for the contact person. You can skip all of these at signup —
+     the LOA in particular is only needed later, for Sender ID approval (see
+     below).
+3. Submit the form. Npontu reviews new accounts manually, so expect a wait
+   before you can log in.
+
+### 2. Get your API credentials
+
+Once your account is approved, log in at
+[deywuro.com/login](https://deywuro.com/login). Your **API username** and
+**password** are the credentials Npontu provisions for your account (the
+username you chose at signup is usually what you'll use — confirm on your
+dashboard, or ask support if you can't find them). These are the
+`DEYWURO_USERNAME` / `DEYWURO_PASSWORD` values this library expects.
+
+**Keep these secret** — treat them like any other API credential. Don't
+commit them to source control; use environment variables or a `.env` file
+that's git-ignored (see [Quickstart](#quickstart-sync) below).
+
+### 3. Request a Sender ID
+
+The `source` parameter (`DEYWURO_SOURCE` for this library) is your **Sender
+ID** — the name recipients see as the SMS sender instead of a phone number
+(e.g. `"MyApp"` instead of a shortcode). Requirements:
+
+- Up to **11 characters**, alphanumeric.
+- Must be **approved by Npontu** before messages sent with it will deliver
+  reliably — an unapproved or unfamiliar sender ID risks being blocked by
+  mobile network operators.
+- To request one, submit an **LOA (Letter of Authorization)** — from your
+  dashboard after logging in, or by emailing
+  [support@npontu.com](mailto:support@npontu.com) if you don't see a
+  self-service option. The LOA is essentially your business formally
+  authorizing the use of that Sender ID.
+- Approval isn't instant — ask support for current turnaround time when you
+  submit.
+
+While waiting for approval, some providers offer a shared/default test
+Sender ID for development — ask support if one's available so you can test
+integration before your own Sender ID clears.
+
+### 4. Put it all together
+
+```bash
+# .env (never commit this file)
+DEYWURO_USERNAME=your-approved-username
+DEYWURO_PASSWORD=your-account-password
+DEYWURO_SOURCE=YourSenderID
+```
+
+> **Note:** Deywuro's public materials don't fully document the post-login
+> dashboard flow for credentials/Sender ID requests. If anything above
+> doesn't match what you see after logging in, the fastest path is
+> [support@npontu.com](mailto:support@npontu.com) — they provision accounts
+> manually and can point you to the exact button/section.
+
 ## Install
 
 ```bash
