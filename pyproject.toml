@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deywuro"
+version = "0.1.0"
+description = "Unofficial Python client for the Deywuro (Npontu) SMS gateway"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "Henry Antwi" }]
+keywords = ["sms", "deywuro", "npontu", "ghana"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Telephony",
+]
+dependencies = ["requests>=2.32"]
+
+[project.optional-dependencies]
+async = ["httpx>=0.27"]
+
+[project.scripts]
+deywuro = "deywuro.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/henryantwi/deywuro"
+Issues = "https://github.com/henryantwi/deywuro/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/deywuro"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "respx>=0.21",
+    "ruff>=0.6",
+]
