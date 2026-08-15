@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "deywuro"
-version = "0.1.0"
+version = "0.1.1"
 description = "Unofficial Python client for the Deywuro (Npontu) SMS gateway"
 readme = "README.md"
 license = "MIT"
