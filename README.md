@@ -1,5 +1,11 @@
 # deywuro
 
+<img src="assets/deywuro-logo.png" alt="Deywuro logo" width="300">
+
+*Deywuro's logo, shown for identification purposes only — this project is an
+independent, unofficial client and is not published, endorsed, or affiliated
+with Npontu Technologies.*
+
 [![CI](https://github.com/henryantwi/deywuro/actions/workflows/ci.yml/badge.svg)](https://github.com/henryantwi/deywuro/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/deywuro.svg)](https://pypi.org/project/deywuro/)
 [![Python versions](https://img.shields.io/pypi/pyversions/deywuro.svg)](https://pypi.org/project/deywuro/)
