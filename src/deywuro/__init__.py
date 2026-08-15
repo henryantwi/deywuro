@@ -13,7 +13,7 @@ from .exceptions import (
 )
 from .validators import normalize_gh_number
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 __all__ = [
     "DeywuroClient",
